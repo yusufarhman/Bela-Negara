@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bela Negara di Era Modern</title>
+    <link rel="icon" href="https://www.upnjatim.ac.id/wp-content/uploads/2018/05/logoupnbaru-300x294.png" type="image/png">
+    <style>
+        :root {
+            --primary-color: #e74c3c;
+            --secondary-color: #34495e;
+            --accent-color: #f1c40f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(rgba(0, 247, 205, 0.7), rgba(36, 117, 122, 0.7)), url('/api/placeholder/1920/1080') center/cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            color: rgb(255, 255, 255);
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .header p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: transparent;
+            padding: 20px;
+            transition: background-color 0.3s;
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .navbar.scrolled a {
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin: 0 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Main Content */
+        .section {
+            padding: 80px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--secondary-color);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        }
+
+        .card p {
+        margin: 0 15px 15px;
+        }
+
+        .card .btn {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        text-decoration: none;
+        margin: 0 15px 15px;
+        transition: background-color 0.3s;
+        }
+
+        .card .btn:hover {
+        background-color: var(--accent-color);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header p {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section {
+                padding: 60px 15px;
+            }
+        }
+
+        .challenge-section {
+            background-color: #f8f9fa;
+        }
+
+        .solutions-section {
+            background-color: #fff;
+        }
+
+        /* Footer */
+        .footer {
+        background-color: var(--secondary-color);
+        color: white;
+        padding: 40px 20px;
+        text-align: center;
+        }
+
+        .social-media {
+        margin-top: 10px;
+        }
+
+        .social-media a {
+        color: white;
+        margin: 0 10px;
+        font-size: 1.5rem; /* Ukuran ikon */
+        transition: color 0.3s;
+        }
+
+        .social-media a:hover {
+        color: var(--accent-color); /* Warna saat hover */
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        margin-top: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .text {
+            font-size: 1.5rem;
+            text-align: center;
+        }
+
+        .review-form {
+        margin-bottom: 30px;
+        }
+
+        .review-form h3 {
+            margin-bottom: 15px;
+        }
+
+        .review-form input,
+        .review-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .review-form button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .review-form button:hover {
+            background-color: var(--accent-color);
+        }
+
+        .reviews-list {
+            margin-top: 20px;
+        }
+
+        .review {
+            background: #f9f9f9;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .review h4 {
+            margin: 0 0 10px;
+            color: var(--primary-color);
+        }
+
+        .review p {
+            margin: 0;
+        }
+
+        .testimonial-carousel {
+        display: flex;
+        overflow: hidden;
+        position: relative;
+        margin-top: 20px;
+        }
+
+        .testimonial {
+            min-width: 300px; /* Atur lebar minimum untuk setiap testimonial */
+            margin-right: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .testimonial-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .testimonial h4 {
+            margin: 0 0 10px;
+            color: var(--primary-color);
+        }
+
+        .testimonial p {
+            margin: 0;
+        }
+
+        .btn {
+            margin-top: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="#about">Tentang</a></li>
+            <li><a href="#importance">Pentingnya</a></li>
+            <li><a href="#challenges">Tantangan</a></li>
+            <li><a href="#solutions">Solusi</a></li>
+        </ul>
+    </nav>
+
+    <header class="header" id="home">
+        <h1>Bela Negara di Era Modern</h1>
+        <p>Menguatkan Semangat Patriotisme di Era Digital</p>
+    </header>
+
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Apa Itu Bela Negara?</h2>
+            </div>
+            <p>Secara sederhana, bela negara adalah upaya setiap warga negara untuk mempertahankan, melindungi, dan memajukan bangsa dan negara dari segala ancaman, baik ancaman dari dalam maupun ancaman luar negeri. Bela negara tidak selalu berarti angkat senjata, melainkan bisa dalam berbagai bentuk, seperti pendidikan, ekonomi, budaya, dan menjaga keharmonisan sosial.
+                Menurut Kaelan dan Zubaidi(2007), Bela Negara adalah tekad, sikap dan tindakan warga negara yang teratur, menyeluruh, terpadu dan berkelanjutan yang dilandasi oleh kecintaan terhadap tanah air serta kesadaran hidup berbangsa dan bernegara. Bagi warga negara Indonesia, usaha pembelaan negara dilandasi oleh kecintaan pada tanah air (wilayah nusantara) dan kesadaran berbangsa dan bernegara Indonesia dengan keyakinan pada Pancasila sebagai dasar negara serta berpijak pada Undang-Undang Dasar 1945 sebagai landasan konstitusi negara.
+                Perwujudan upaya pertahanan negara dalam rangka perjuangan nasional adalah kesiapan dan kesediaan seluruh warga negara untuk berkorban demi mempertahankan kemerdekaan, kedaulatan negara, persatuan dan kesatuan negara Indonesia, keutuhan wilayah nusantara, dan yurisdiksi nasional. Seiring dengan nilai-nilai Pancasila dan UUD 1945, hal tersebut merupakan kewajiban seluruh warga negara yang hidup di tanah Indonesia.
+            </p>
+            <div class="cards">
+                <div class="card">
+                    <h3>Landasan Hukum</h3>
+                    <p>Tercantum dalam UUD 1945 pasal 27 ayat 3 yang menyatakan bahwa setiap warga negara berhak dan wajib ikut serta dalam usaha pembelaan negara.</p>
+                </div>
+                <div class="card">
+                    <h3>Perwujudan</h3>
+                    <p>Kesiapan dan kesediaan seluruh warga negara untuk berkorban demi mempertahankan kemerdekaan, kedaulatan negara, dan persatuan bangsa.</p>
+                </div>
+                <div class="card">
+                    <h3>Implementasi</h3>
+                    <p>Dapat diwujudkan melalui berbagai bentuk, seperti pendidikan, ekonomi, budaya, dan menjaga keharmonisan sosial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section challenge-section" id="challenges">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tantangan di Era Digital</h2>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <h3>Perang Informasi</h3>
+                    <p>Penyebaran hoaks, ujaran kebencian, dan disinformasi yang dapat memecah belah persatuan bangsa.</p>
+                </div>
+                <div class="card">
+                    <h3>Serangan Siber</h3>
+                    <p>Ancaman terhadap infrastruktur kritis negara, sistem pemerintahan, dan keamanan data.</p>
+                </div>
+                <div class="card">
+                    <h3>Radikalisme</h3>
+                    <p>Penyebaran paham radikal dan perekrutan anggota melalui platform digital.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section solutions-section" id="solutions">
+        <div class="container">
+            <div class="section-title">
+                <h2>Solusi dan Upaya</h2>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <h3>Literasi Digital</h3>
+                    <p>Meningkatkan kemampuan masyarakat dalam memahami dan menggunakan teknologi digital secara bijak.</p>
+                </div>
+                <div class="card">
+                    <h3>Penguatan Nilai Kebangsaan</h3>
+                    <p>Menanamkan nilai-nilai Pancasila dan nasionalisme sejak dini melalui pendidikan.</p>
+                </div>
+                <div class="card">
+                    <h3>Partisipasi Aktif</h3>
+                    <p>Mendorong peran serta masyarakat dalam kegiatan sosial dan pembangunan bangsa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>Galeri Foto</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://www.upnjatim.ac.id/wp-content/uploads/2019/11/1-768x432.jpg" alt="Acara 1" class="gallery-image">
+                    <div class="overlay">
+                        <div class="text">Outbond Bela Negara</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.upnjatim.ac.id/wp-content/uploads/2021/12/WEBHBN1-300x169.jpg" alt="Acara 2" class="gallery-image">
+                    <div class="overlay">
+                        <div class="text">Peringati Hari Bela Negara ke 73 tahun</div>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://www.upnvj.ac.id/id/files/thumb/269064c787d66e89e79a8977563824e4/750/375" alt="Acara 3" class="gallery-image">
+                    <div class="overlay">
+                        <div class="text">UPNVJ Selenggarakan Aktualisasi Bela Negara dalam Rangka MBKM</div>
+                    </div>
+                </div>
+                <!-- Tambahkan lebih banyak gambar sesuai kebutuhan -->
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section" id="events">
+        <div class="container">
+            <div class="section-title">
+                <h2>Kalender Acara</h2>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <img src="https://lp2m.upnvj.ac.id/wp-content/uploads/2023/12/WhatsApp-Image-2023-12-19-at-8.49.32-PM.jpeg" alt="Webinar Bela Negara">
+                    <h3>Webinar Bela Negara</h3>
+                    <p>Tanggal: 15 November 2024</p>
+                    <p>Waktu: 10:00 - 12:00 WIB</p>
+                    <a href="#" class="btn">Daftar Sekarang</a>
+                </div>
+                <div class="card">
+                    <img src="https://www.wallpapertip.com/wmimgs/16-164011_hari-pahlawan-10-november-2019.jpg" alt="Hari Pahlawan">
+                    <h3>Hari Pahlawan</h3>
+                    <p>Tanggal: 10 November 2024</p>
+                    <p>Acara: Upacara Peringatan</p>
+                    <a href="#" class="btn">Info Selengkapnya</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Kisah Inspiratif</h2>
+            </div>
+            <div class="testimonial-carousel">
+                <div class="testimonial">
+                    <img src="https://media.licdn.com/dms/image/v2/D4D03AQGV94-CK7ZIug/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1726151337930?e=1736985600&v=beta&t=TiRbN2HHUQbp4NHntaUcfVDOCBx-uLkeDTpmlFggrOo" alt="Nama Pengguna 1" class="testimonial-image">
+                    <h4>Muhamad Yusuf Arohman</h4>
+                    <p>"Pengalaman saya berpartisipasi dalam kegiatan bela negara sangat menginspirasi!"</p>
+                </div>
+                <div class="testimonial">
+                    <img src="https://media.licdn.com/dms/image/v2/D5635AQFHZoH22-hGTA/profile-framedphoto-shrink_800_800/profile-framedphoto-shrink_800_800/0/1719722160681?e=1731834000&v=beta&t=Aoi5hmL2AZuZg2TNWcunJY-5LdhCgYP3Tnd851yQPSE" alt="Nama Pengguna 2" class="testimonial-image">
+                    <h4>Mohamad Angga Yunus</h4>
+                    <p>"Saya merasa lebih percaya diri setelah mengikuti program ini."</p>
+                </div>
+                <div class="testimonial">
+                    <img src="https://media.licdn.com/dms/image/v2/D5603AQGKoL4yITqMfQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1699202878237?e=1736985600&v=beta&t=_e6kk1m_FROMpvfZTWZB1QhYWHhxs7OywXBi8lpqzmY" alt="Nama Pengguna 3" class="testimonial-image">
+                    <h4>Mohammad Dicky  Haikal Aly</h4>
+                    <p>"Kegiatan ini membuka wawasan saya tentang pentingnya bela negara."</p>
+                </div>
+                <!-- Tambahkan lebih banyak testimonial sesuai kebutuhan -->
+            </div>
+            <button class="btn" id="loadMore">Tampilkan Lebih Banyak</button>
+        </div>
+    </section>
+
+    <section class="section" id="reviews">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ulasan Pengunjung</h2>
+            </div>
+            <div class="review-form">
+                <h3>Berikan Ulasan Anda</h3>
+                <form id="reviewForm" action="#" method="POST">
+                    <input type="text" name="name" placeholder="Nama" required>
+                    <textarea name="review" placeholder="Ulasan Anda" required></textarea>
+                    <button type="submit">Kirim Ulasan</button>
+                </form>
+            </div>
+            <div class="reviews-list" id="reviewsList">
+                <div class="review">
+                    <h4>Feomita</h4>
+                    <p>Website ini sangat membantu.</p>
+                </div>
+                <!-- Ulasan baru akan ditambahkan di sini -->
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Bela Negara Indonesia. All rights reserved.</p>
+        <div class="social-media">
+            <a href="https://facebook.com" target="_blank" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com" target="_blank" aria-label="Twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </div>
+    </footer>
+
+    <div class="scroll-top">↑</div>
+
+    <script>
+        // Navbar color change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll to top button
+        const scrollTopBtn = document.querySelector('.scroll-top');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+        });
+
+        scrollTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Add animation to cards on scroll
+        const cards = document.querySelectorAll('.card');
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver(function(entries, observer) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(card);
+        });
+
+        // Add animation to event cards on scroll
+        const eventCards = document.querySelectorAll('.card');
+        const observerOptions = {
+        threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+        }
+        });
+        }, observerOptions);
+
+        document.getElementById('reviewForm').addEventListener('submit', function(event) {
+         event.preventDefault(); // Mencegah pengiriman form secara default
+
+            // Ambil nilai dari input
+            const name = this.name.value;
+            const review = this.review.value;
+
+            // Buat elemen baru untuk ulasan
+            const reviewItem = document.createElement('div');
+            reviewItem.classList.add('review');
+            reviewItem.innerHTML = `<h4>${name}</h4><p>${review}</p>`;
+
+            // Tambahkan ulasan baru ke daftar ulasan
+            document.getElementById('reviewsList').appendChild(reviewItem);
+
+            // Reset form
+            this.reset();
+        });
+
+        const testimonials = document.querySelectorAll('.testimonial');
+        let currentIndex = 0;
+
+        function showTestimonials() {
+            testimonials.forEach((testimonial, index) => {
+            testimonial.style.display = (index === currentIndex) ? 'block' : 'none';
+        });
+        }
+
+        document.getElementById('loadMore').addEventListener('click', function() {
+            currentIndex = (currentIndex + 1) % testimonials.length; // Ganti indeks
+            showTestimonials();
+        });
+
+        // Tampilkan testimonial pertama saat halaman dimuat
+        showTestimonials();
+
+        eventCards.forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s, transform 0.5s';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
